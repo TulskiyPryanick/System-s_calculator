@@ -1,13 +1,15 @@
-for_11_16 = {'10':'A',
-             '11':'B',
-             '12':'C',
-             '13':'D',
-             '14':'E',
-             '15':'F'}
+for_11_16 = {'10': 'A',
+             '11': 'B',
+             '12': 'C',
+             '13': 'D',
+             '14': 'E',
+             '15': 'F'}
 
 eror_response = 'Не верно число или его система'
 
-def checking_the_number(numder_or_letter):  # возвращает число из числа или буквы
+
+def checking_the_number(numder_or_letter):
+    # Возвращает число из числа или буквы
     if numder_or_letter.isdigit() and int(numder_or_letter) < 10:
         return int(numder_or_letter)
     else:
@@ -20,7 +22,7 @@ def per_v_des(chislo, sistem):
     for one in chislo:
         if checking_the_number(one) >= sistem:
             return eror_response
-    if len(chislo) > 1 :
+    if len(chislo) > 1:
         otv = checking_the_number(chislo[0]) * sistem
         for i in chislo[1:len(chislo) - 1]:
             checking = checking_the_number(i)
@@ -56,6 +58,7 @@ def per_iz_des(chislo, sist):
     else:
         return eror_response
 
+
 while True:
     print('Выберете действие:\n'
           '1.Перевод из десятичной в другую систему-\n'
@@ -78,7 +81,8 @@ while True:
         if number_in_dec == eror_response:
             print(eror_response)
             continue
-        print(per_iz_des(number_in_dec,int(input('Введите нужную вам систему:'))))
+        print(per_iz_des(number_in_dec,
+              int(input('Введите нужную вам систему:'))))
 
     elif inf_response == '4':
         break
