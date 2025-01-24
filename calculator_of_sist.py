@@ -6,6 +6,8 @@ for_11_16 = {'10': 'A',
              '15': 'F'}
 
 eror_response = 'Не верно число или его система'
+NeedSyst = 'Введите нужную вам систему:'
+SystInfo = 'Введите систему этого числа:'
 
 
 def checking_the_number(numder_or_letter):
@@ -61,28 +63,64 @@ def per_iz_des(chislo, sist):
 
 while True:
     print('Выберете действие:\n'
-          '1.Перевод из десятичной в другую систему-\n'
-          '2.Перевод из системы в десятичную-\n'
-          '3.Перевод из одной системы в другую-\n'
-          '4.Stop-')
+          '1.Перевод из одной системы в другую-\n'
+          '2.Сложение(+)\n'
+          '3.Вычетание(-)\n'
+          '4.Умножение(*)\n'
+          '5.Деление(:)\n'
+          '6.Stop-')
 
     inf_response = str(input('Введите цифру действия из списка:'))
+
     if inf_response == '1':
-        print(per_iz_des(str(input('Введите число в десятичной системе:')),
-                         int(input('Введите нужную вам систему:'))))
-
-    elif inf_response == '2':
-        print(per_v_des(str(input('Ведите число:')),
-                        int(input('Введите систему этого числа:'))))
-
-    elif inf_response == '3':
+        # перевод
         number_in_dec = per_v_des(str(input('Ведите число:')),
-                                  int(input('Введите систему этого числа:')))
+                                  int(input(SystInfo)))
         if number_in_dec == eror_response:
             print(eror_response)
             continue
         print(per_iz_des(number_in_dec,
-              int(input('Введите нужную вам систему:'))))
+              int(input(NeedSyst))))
+
+    elif inf_response == '2':
+        # сложение
+        firstnum = per_v_des(str(input('Ведите 1ое число:')),
+                             int(input(SystInfo)))
+        sekondnum = per_v_des(str(input('Ведите 2ое число:')),
+                              int(input(SystInfo)))
+
+        sum = int(firstnum) + int(sekondnum)
+        print(per_iz_des(str(sum), int(input(NeedSyst))))
+
+    elif inf_response == '3':
+        # вычетание
+        firstnum = per_v_des(str(input('Ведите 1ое (большее) число:')),
+                             int(input(SystInfo)))
+        sekondnum = per_v_des(str(input('Ведите 2ое число:')),
+                              int(input(SystInfo)))
+
+        difference = int(firstnum) - int(sekondnum)
+        print(per_iz_des(str(difference), int(input(NeedSyst))))
 
     elif inf_response == '4':
+        # умножение
+        firstnum = per_v_des(str(input('Ведите 1ое число:')),
+                             int(input(SystInfo)))
+        sekondnum = per_v_des(str(input('Ведите 2ое число:')),
+                              int(input(SystInfo)))
+
+        multiplication = int(firstnum) * int(sekondnum)
+        print(per_iz_des(str(multiplication), int(input(NeedSyst))))
+
+    elif inf_response == '5':
+        # деление
+        firstnum = per_v_des(str(input('Ведите 1ое (большее) число:')),
+                             int(input(SystInfo)))
+        sekondnum = per_v_des(str(input('Ведите 2ое число:')),
+                              int(input(SystInfo)))
+
+        multiplication = int(firstnum) // int(sekondnum)
+        print(per_iz_des(str(multiplication), int(input(NeedSyst))))
+
+    elif inf_response == '6':
         break
